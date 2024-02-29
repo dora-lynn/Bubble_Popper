@@ -1,4 +1,4 @@
-import random
+import random, math
 import pygame
 
 SCREEN_WIDTH = 1200
@@ -14,6 +14,11 @@ class Bubble:
         self.circY = random.randint(-100, 700)
         self.velocityX = random.uniform(-.05, .05)
         self.velocityY = random.uniform(-.05, .05)
+
+    def is_point_in(self, p):
+        dx = p[0] - self.circX
+        dy = p[1] - self.circY
+        return math.hypot(dx, dy) <= self.radius * self.radius
 
     def draw(self):
         pygame.draw.circle(screen, 'skyblue2', (self.circX, self.circY), self.radius)

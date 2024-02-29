@@ -1,4 +1,4 @@
-import pygame
+import pygame, sys
 import random
 from bubble import Bubble
 
@@ -28,6 +28,7 @@ def show_score(x, y):
 
 run = True
 while run:
+
     screen.fill('deepskyblue4')
     show_score(textX, textY)
     for bubble in bubbles:
@@ -36,6 +37,13 @@ while run:
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
-            run = False
+            pygame.quit()
+            sys.exit()
 
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            for bubble in bubbles:
+                if bubble.is_point_in(event.pos):
+                    score_value += 1
+                    print("Bubble Clicked")
+                    
     pygame.display.flip()
