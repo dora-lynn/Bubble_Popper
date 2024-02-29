@@ -21,11 +21,11 @@ class Bubble:
     def move(self, screen):
         self.circX += self.velocityX
         self.circY += self.velocityY
-        if self.circX >= SCREEN_WIDTH:
+        if self.circX + self.radius >= SCREEN_WIDTH:
             self.velocityX = -.05
-        elif self.circX <= 0:
+        elif self.circX - self.radius <= 0:
             self.velocityX = .05
-        elif self.circY >= SCREEN_HEIGHT:
+        elif self.circY + self.radius >= SCREEN_HEIGHT:
             self.velocityY = -.05
-        elif self.circY <= 0:
+        elif self.circY - self.radius <= 0:
             self.velocityY = .05
