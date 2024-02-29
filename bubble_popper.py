@@ -8,6 +8,7 @@ SCREEN_WIDTH = 1200
 SCREEN_HEIGHT = 800
 
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+screen_r = screen.get_rect()
 pygame.display.set_caption("Bubble Popper")
 
 score_value = 0
@@ -31,6 +32,7 @@ while run:
     show_score(textX, textY)
     for bubble in bubbles:
         bubble.draw()
+        bubble.move(screen)
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
