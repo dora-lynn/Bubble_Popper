@@ -26,24 +26,24 @@ def show_score(x, y):
     score = font.render("Score: " + str(score_value), True, 'black')
     screen.blit(score, (x, y))
 
+draw_bubble = True
+
 run = True
 while run:
 
     screen.fill('deepskyblue4')
     show_score(textX, textY)
     for bubble in bubbles:
-        bubble.draw()
         bubble.move(screen)
-
+        if draw_bubble == True:
+            bubble.draw()
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
             sys.exit()
 
         if event.type == pygame.MOUSEBUTTONDOWN:
-            for bubble in bubbles:
                 if bubble.is_point_in(event.pos):
                     score_value += 1
-                    print("Bubble Clicked")
                     
     pygame.display.flip()
