@@ -16,9 +16,11 @@ class Bubble:
         self.velocityY = random.uniform(-.05, .05)
 
     def is_point_in(self, p):
-        dx = p[0] - self.circX
-        dy = p[1] - self.circY
-        return math.hypot(dx, dy) <= self.radius * self.radius
+        x = pygame.mouse.get_pos()[0]
+        y = pygame.mouse.get_pos()[1]
+        distance = ((x - self.circX)**2 +
+                    (y - self.circY)**2)**0.5
+        return distance <= self.radius
 
     def draw(self):
         pygame.draw.circle(screen, 'skyblue2', (self.circX, self.circY), self.radius)

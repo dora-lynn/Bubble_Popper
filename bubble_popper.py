@@ -37,12 +37,14 @@ while run:
         bubble.move(screen)
         if draw_bubble == True:
             bubble.draw()
+
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
             sys.exit()
 
         if event.type == pygame.MOUSEBUTTONDOWN:
+            for bubble in bubbles:
                 if bubble.is_point_in(event.pos):
                     score_value += 1
                     
